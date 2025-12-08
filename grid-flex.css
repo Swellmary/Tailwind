@@ -1,0 +1,62 @@
+
+@import "tailwindcss";
+@import "./custom.css"; 
+
+
+.grid-container {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-rows: 200px;
+    grid-auto-columns: 100px ;
+    gap: 1em;
+    border: 1px solid black;
+
+    justify-items: center;
+    
+}
+
+.items {
+
+    padding: 1em;
+    background-color: rgb(32, 99, 255);
+    color: white;
+    text-align: center;
+    border-radius: 8px;
+    font-size: 2rem;
+}
+
+/* || Darkmode Card Example - tailwind playground*/
+@custom-variant dark (&:where(.dark, .dark *));
+
+
+/* ||Namespace - works on tailwind playground */
+@theme {
+  --color-chestnut: #3cb371;
+}
+
+@layer base { /*allows to automatically targic specific elements*/
+  h3 {
+    @apply text-base font-medium tracking-tight text-slate-900 dark:text-white
+  }
+  p {
+   @apply mt-2 text-sm text-slate-500 dark:text-blue-100
+  }
+  button {
+    @apply px-4 py-2 text-sm font-medium mt-8 text-blue-900 bg-blue-100 rounded-md
+  }
+  
+}
+
+/* || Card - used the card on the div class - added card */
+@layer components {
+  .card{
+    @apply m-10 rounded-lg bg-white px-6 py-8 shadow-xl ring-1 ring-slate-900/5 dark:bg-black
+  }
+}
+
+/* || Utilities - custom, particular elements */
+
+@utility flex-center { /*this will allow you to completely center a certain element within a div*/
+  @apply flex justify-center items-center
+} /*add the flex-center on a div and it will center the element within the div*/
+
